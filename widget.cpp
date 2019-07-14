@@ -87,26 +87,22 @@ void Widget::on_return_btn_clicked()
     QMessageBox returnmsg;
     int coin[4] = {0,};
 
-    for (int i = 0; money > 0; i++){
-        if(money / 500 > 0){
-            ++coin[0];
-            money -= 500;
-            continue;
+    for (int i = 0; money > 0; i++) {
+        if(i == 0) {
+            coin[i] = money / 500;
+            money %= 500;
         }
-        else if (money / 100 > 0) {
-            ++coin[1];
-            money -= 100;
-            continue;
+        else if (i == 1) {
+            coin[i] = money / 100;
+            money %= 100;
         }
-        else if (money / 50 > 0) {
-            ++coin[2];
-            money -= 50;
-            continue;
+        else if (i == 2) {
+            coin[i] = money / 50;
+            money %= 50;
         }
-        else if (money / 10 > 0) {
-            ++coin[3];
-            money -= 10;
-            continue;
+        else {
+            coin[i] = money / 10;
+            money %= 10;
         }
     }
 
